@@ -244,7 +244,7 @@ println!("1 new tweet: {}", tweet.summarize());
 
 上面这个限制是被称为 **相干性**（*coherence*） 的程序属性的一部分，或者更具体的说是 **孤儿规则**（*orphan rule*），其得名于不存在父类型。
 
-这条规则确保了其他人编写的代码不会破坏你代码，反之亦然。没有这条规则的话，两个 crate 可以分别对相同类型实现相同的 trait，而 Rust 将无从得知应该使用哪一个实现。
+这条规则确保了其他人编写的代码不会破坏你的代码，反之亦然。没有这条规则的话，两个 crate 可以分别对相同类型实现相同的 trait，而 Rust 将无从得知应该使用哪一个实现。
 
 ### 默认实现
 
@@ -301,7 +301,7 @@ pub fn notify(item1: impl Summary, item2: impl Summary) {...}
 这种写法适用于希望两个`item`是不同类型的情况（只要它们都实现了`Summary`），但如果想要强制它们都是相同类型，则只能用trait bound：
 
 ```rust
-pub fn notify<T: Summary>(item1: T, iten2: T) {...}
+pub fn notify<T: Summary>(item1: T, item2: T) {...}
 ```
 
 #### 通过 + 指定多个 trait bound
